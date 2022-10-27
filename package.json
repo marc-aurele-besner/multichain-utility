@@ -1,0 +1,47 @@
+{
+  "name": "multichain-utility",
+  "version": "0.0.1",
+  "description": "Collection of useful helper function for multi blockchain",
+  "license": "MIT",
+  "main": "dist/index",
+  "typings": "dist/index",
+  "bin": {
+    "multichain-utility": "./dist/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marc-aurele-besner/multichain-utility.git"
+  },
+  "keywords": [
+    "multi-chain",
+    "ethereum",
+    "tron"
+  ],
+  "author": "Marc-Aurele Besner <82244926+marc-aurele-besner@users.noreply.github.com>",
+  "bugs": {
+    "url": "https://github.com/marc-aurele-besner/multichain-utility/issues"
+  },
+  "homepage": "https://github.com/marc-aurele-besner/multichain-utility#readme",
+  "files": [
+    "dist/",
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "lint:fix": "prettier --write src/**/*.{js,ts} && tslint --fix --config tslint.json --project tsconfig.json",
+    "lint": "tslint --config tslint.json --project tsconfig.json",
+    "prepublishOnly": "tsc --project tsconfig.prod.json",
+    "build": "npx awesome-readme && npm run lint:fix && tsc --project tsconfig.prod.json",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "awesome-readme": "^0.0.8",
+    "ethers": "^5.7.2",
+    "tronweb": "^4.4.0"
+  },
+  "peerDependencies": {
+    "ethers": "^5.7.2",
+    "tronweb": "^4.4.0"
+  }
+}
