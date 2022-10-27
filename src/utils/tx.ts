@@ -3,7 +3,7 @@ import contractWithSigner from './contractWithSigner'
 import { isTron } from './tron'
 
 export const txRead = async (
-    env: any,
+    networkName: string,
     instance: any,
     submitter: any,
     functionSignature: string,
@@ -14,8 +14,8 @@ export const txRead = async (
     argument5?: any,
     extra?: any
 ) => {
-    if (isTron(env)) {
-        instance = await contractWithSigner(env, instance, submitter)
+    if (isTron(networkName)) {
+        instance = await contractWithSigner(networkName, instance, submitter)
         switch (true) {
             case argument1 !== undefined &&
                 argument2 !== undefined &&
@@ -64,9 +64,10 @@ export const txRead = async (
 }
 
 export const txWrite = async (
-    env: any,
+    networkName: string,
     instance: any,
     submitter: any,
+    provider: any,
     functionSignature: string,
     argument1?: any,
     argument2?: any,
@@ -82,31 +83,34 @@ export const txWrite = async (
             argument4 !== undefined &&
             argument5 !== undefined:
             return checkTxnResult(
-                env,
+                networkName,
                 await instance[functionSignature](argument1, argument2, argument3, argument4, argument5),
-                submitter
+                submitter,
+                provider
             )
         case argument1 !== undefined && argument2 !== undefined && argument3 !== undefined && argument4 !== undefined:
             return checkTxnResult(
-                env,
+                networkName,
                 await instance[functionSignature](argument1, argument2, argument3, argument4),
-                submitter
+                submitter,
+                provider
             )
         case argument1 !== undefined && argument2 !== undefined && argument3 !== undefined:
-            return checkTxnResult(env, await instance[functionSignature](argument1, argument2, argument3), submitter)
+            return checkTxnResult(networkName, await instance[functionSignature](argument1, argument2, argument3), submitter, provider)
         case argument1 !== undefined && argument2 !== undefined:
-            return checkTxnResult(env, await instance[functionSignature](argument1, argument2), submitter)
+            return checkTxnResult(networkName, await instance[functionSignature](argument1, argument2), submitter, provider)
         case argument1 !== undefined:
-            return checkTxnResult(env, await instance[functionSignature](argument1), submitter)
+            return checkTxnResult(networkName, await instance[functionSignature](argument1), submitter, provider)
         default:
-            return checkTxnResult(env, await instance[functionSignature](), submitter)
+            return checkTxnResult(networkName, await instance[functionSignature](), submitter, provider)
     }
 }
 
 export const txWriteWithError = async (
-    env: any,
+    networkName: string,
     instance: any,
     submitter: any,
+    provider: any,
     functionSignature: string,
     error: string,
     argument1?: any,
@@ -123,30 +127,33 @@ export const txWriteWithError = async (
             argument4 !== undefined &&
             argument5 !== undefined:
             return checkTxnResult(
-                env,
+                networkName,
                 await instance[functionSignature](argument1, argument2, argument3, argument4, argument5),
                 submitter,
+                provider,
                 error
             )
         case argument1 !== undefined && argument2 !== undefined && argument3 !== undefined && argument4 !== undefined:
             return checkTxnResult(
-                env,
+                networkName,
                 await instance[functionSignature](argument1, argument2, argument3, argument4),
                 submitter,
+                provider,
                 error
             )
         case argument1 !== undefined && argument2 !== undefined && argument3 !== undefined:
             return checkTxnResult(
-                env,
+                networkName,
                 await instance[functionSignature](argument1, argument2, argument3),
                 submitter,
+                provider,
                 error
             )
         case argument1 !== undefined && argument2 !== undefined:
-            return checkTxnResult(env, await instance[functionSignature](argument1, argument2), submitter, error)
+            return checkTxnResult(networkName, await instance[functionSignature](argument1, argument2), submitter, provider, error)
         case argument1 !== undefined:
-            return checkTxnResult(env, await instance[functionSignature](argument1), submitter, error)
+            return checkTxnResult(networkName, await instance[functionSignature](argument1), submitter, provider, error)
         default:
-            return checkTxnResult(env, await instance[functionSignature](), submitter, error)
+            return checkTxnResult(networkName, await instance[functionSignature](), submitter, provider, error)
     }
 }

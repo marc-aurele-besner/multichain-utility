@@ -8,7 +8,6 @@ import emptyWallets from './emptyWallets'
 import increaseBlockTime from './increaseBlockTime'
 import mineBlocks from './mineBlocks'
 import mintTokenForWallets from './mintTokenForWallets'
-import setupDeployerWallet from './setupDeployerWallet'
 import sleep from './sleep'
 import submitRawTxn from './submitRawTxn'
 import { getTronFullHost, identifyTronNetwork, isTron } from './tron'
@@ -26,7 +25,6 @@ export default {
     increaseBlockTime,
     mineBlocks,
     mintTokenForWallets,
-    setupDeployerWallet,
     sleep,
     submitRawTxn,
     txRead,

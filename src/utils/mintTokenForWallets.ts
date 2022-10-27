@@ -2,16 +2,17 @@ import checkTxnResult from './checkTxnResult'
 import { isTron } from './tron'
 
 const mintTokenForWallets = async (
-    env: any,
+    networkName: string,
     ERC20TokenContract: any,
     faucet: any,
+    provider: any,
     wallets: any,
     mintAmount = '1000000'
 ) => {
-    if (isTron(env))
+    if (isTron(networkName))
         wallets.forEach(async (wallet: { address: { base58: string } }) => {
             const mintingInput = await ERC20TokenContract.mint(wallet.address.base58, mintAmount)
-            await checkTxnResult(env, mintingInput, faucet)
+            await checkTxnResult(networkName, mintingInput, faucet, provider)
         })
     else
         wallets.forEach(async (wallet: { address: string }) => {
@@ -19,7 +20,7 @@ const mintTokenForWallets = async (
                 wallet.address,
                 mintAmount
             )
-            await checkTxnResult(env, mintingInput, faucet)
+            await checkTxnResult(networkName, mintingInput, faucet, provider)
         })
 }
 
