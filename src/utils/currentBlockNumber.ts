@@ -1,4 +1,4 @@
-import { getTronWeb, isTron } from './Tron'
+import { getTronWeb, isTron } from './tron'
 
 const currentBlockNumber = async (env: any) => {
     if (isTron(env)) {

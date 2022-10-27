@@ -1,4 +1,4 @@
-import { getTronWeb, isTron } from './Tron'
+import { getTronWeb, isTron } from './tron'
 
 const createWallets = async (env: any, numberOfWallet: number, etherFaucetAddress: any, totalEther: string) => {
     const wallets = []

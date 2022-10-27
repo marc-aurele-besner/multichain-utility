@@ -1,5 +1,5 @@
 import currentBlock from './currentBlock'
-import { isTron } from './Tron'
+import { isTron } from './tron'
 
 const increaseBlockTime = async (env: any, addSec: number) => {
     if (env.network.name === 'hardhat') {

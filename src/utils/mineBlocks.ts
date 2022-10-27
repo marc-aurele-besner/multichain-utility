@@ -1,7 +1,7 @@
 import currentBlock from './currentBlock'
 import currentBlockNumber from './currentBlockNumber'
 import sleep from './sleep'
-import { isTron } from './Tron'
+import { isTron } from './tron'
 
 const mineBlocks = async (env: any, start: number, mine = 1) => {
     if (isTron(env)) await sleep(120000) // 2 minutes

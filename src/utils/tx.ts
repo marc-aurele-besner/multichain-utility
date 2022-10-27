@@ -1,6 +1,6 @@
 import checkTxnResult from './checkTxnResult'
 import contractWithSigner from './contractWithSigner'
-import { isTron } from './Tron'
+import { isTron } from './tron'
 
 export const txRead = async (
     env: any,

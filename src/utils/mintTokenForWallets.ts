@@ -1,5 +1,5 @@
 import checkTxnResult from './checkTxnResult'
-import { isTron } from './Tron'
+import { isTron } from './tron'
 
 const mintTokenForWallets = async (
     env: any,

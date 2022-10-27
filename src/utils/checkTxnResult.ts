@@ -2,7 +2,7 @@ import { expect } from 'chai'
 
 import sleep from './sleep'
 import submitRawTxn from './submitRawTxn'
-import { getTronWeb, isTron } from './Tron'
+import { getTronWeb, isTron } from './tron'
 
 const checkTxnResult = async (env: any, input: any, sender: any, errMsg?: any) => {
     let result

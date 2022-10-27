@@ -11,7 +11,7 @@ import mintTokenForWallets from './mintTokenForWallets'
 import setupDeployerWallet from './setupDeployerWallet'
 import sleep from './sleep'
 import submitRawTxn from './submitRawTxn'
-import { getTronFullHost, identifyTronNetwork, isTron } from './Tron'
+import { getTronFullHost, identifyTronNetwork, isTron } from './tron'
 import { txRead, txWrite, txWriteWithError } from './tx'
 import walletAddress from './walletAddress'
 

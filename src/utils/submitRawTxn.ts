@@ -1,6 +1,6 @@
 import { utils } from 'ethers'
 
-import { isTron } from './Tron'
+import { isTron } from './tron'
 
 const submitRawTxn = async (networkName:string, input: any, sender: any, provider: any, extra?: any) => {
     if (isTron(input.network)) {

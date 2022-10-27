@@ -1,4 +1,4 @@
-import { getTronWeb, isTron } from './Tron'
+import { getTronWeb, isTron } from './tron'
 
 const emptyWallets = async (env: any, wallets: any[], admin: any) => {
     if (env.network.name === 'hardhat') return

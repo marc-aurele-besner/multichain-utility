@@ -1,4 +1,4 @@
-import { isTron } from './Tron'
+import { isTron } from './tron'
 
 const walletAddress = (env: any, wallet: any) => {
     if (isTron(env)) return wallet.address.hex

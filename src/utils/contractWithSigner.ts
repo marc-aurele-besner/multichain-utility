@@ -1,4 +1,4 @@
-import { getTronWeb, isTron } from './Tron'
+import { getTronWeb, isTron } from './tron'
 
 const contractWithSigner = async (env: any, contract: any, submitter: any) => {
     if (isTron(env)) {
